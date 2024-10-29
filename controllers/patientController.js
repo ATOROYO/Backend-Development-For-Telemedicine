@@ -14,5 +14,12 @@ exports.registerPatient = async (req, res) => {
       .json({ message: "Please correct input errors", errors: errors.array() });
   }
 
+//   Fetching input parameters from the request body
   const { firstName, lastName, email, phone, password } = req.body;
+
+  try{
+
+  }catch(){
+      
+  }
 };
