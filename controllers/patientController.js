@@ -13,4 +13,6 @@ exports.registerPatient = async (req, res) => {
       .status(400)
       .json({ message: "Please correct input errors", errors: errors.array() });
   }
+
+  const { firstName, lastName, email, phone, password } = req.body;
 };
