@@ -34,3 +34,6 @@ app.use(
     },
   })
 );
+
+// route
+app.use("/telemedicine/api/patient", require("./routes/patientRoutes"));
