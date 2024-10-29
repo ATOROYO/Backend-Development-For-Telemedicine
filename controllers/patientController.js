@@ -14,7 +14,7 @@ exports.registerPatient = async (req, res) => {
       .json({ message: "Please correct input errors", errors: errors.array() });
   }
 
-//   Fetching input parameters from the request body
+// Fetching input parameters from the request body
   const { firstName, lastName, email, phone, password } = req.body;
 
   try{
@@ -23,6 +23,12 @@ exports.registerPatient = async (req, res) => {
     if (patient.length > 0) {
         return res.status(400).json({message:"The user already exist! "})
     }
+
+// Prepare our data - hash the password
+const hashedPassword = await bcrypt.hash(password,10);
+
+// Insert the record
+awaitdb.execute("INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?", [firstName,lastName,email,phone,password])
   }catch(){
       
   }
