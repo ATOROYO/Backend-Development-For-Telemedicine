@@ -29,6 +29,9 @@ const hashedPassword = await bcrypt.hash(password,10);
 
 // Insert the record
 awaitdb.execute("INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?", [firstName,lastName,email,phone,password])
+
+// Response
+return res.status(201).json({message:"New user registered successfully."})
   }catch(){
       
   }
