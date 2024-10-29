@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const MySQLStore = require("connect-mysql2")(session);
 const dotenv = require("dotenv");
+
+// Initialize env management
 dotenv.config();
 
 // Initialize the app
