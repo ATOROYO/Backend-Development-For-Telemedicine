@@ -61,7 +61,16 @@ exports.loginPatient = async () => {
       [email]
     );
     if (patient.length === 0) {
-      return res.status(400).json({ message: "The does not already exist! " });
+      return res.status(400).json({ message: "The does not exist! " });
+    }
+
+    // Check the password
+    const isMatch = await bcrypt.compare(password, patient[0].password);
+
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ message: "Invalid email/password combination" });
     }
   } catch (error) {}
 };
