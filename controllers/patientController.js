@@ -99,3 +99,37 @@ exports.logoutPatient = (req, res) => {
     return res.status(200).json({ message: "Successfully logged out" });
   });
 };
+
+// Get user information for editing
+exports.updatePatient = async (req, res) => {
+  // Check whether user is loged in / authorised
+  if (!req.session.email) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    // Fetch user
+    const [patient] = await db.execute(
+      "SELECT * FROM patients WHERE EMAIL = ?",
+      [email]
+    );
+    if (patient.length === 0) {
+      return res.status(400).json({ message: "User not found! " });
+    }
+
+    return res
+      .status(200)
+      .json({
+        message: "Patient details fetched for update",
+        patient: patient[0],
+      });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({
+        message: "An error occured while fetching patient details",
+        error: error.message,
+      });
+  }
+};
