@@ -72,5 +72,18 @@ exports.loginPatient = async () => {
         .status(400)
         .json({ message: "Invalid email/password combination" });
     }
-  } catch (error) {}
+
+    // Create a session
+    res.session.email = patient[0].email;
+
+    return res.status.json({ message: "Successfull login" });
+
+    // Login error
+  } catch (error) {
+    console.error(error);
+    res.status().json({
+      message: "An error occured during login",
+      error: error.message,
+    });
+  }
 };
