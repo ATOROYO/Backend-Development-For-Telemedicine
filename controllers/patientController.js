@@ -42,11 +42,15 @@ exports.registerPatient = async (req, res) => {
       .json({ message: "New user registered successfully." });
   } catch (error) {
     console.error(error);
-    res
-      .status()
-      .json({
-        message: "An error occured during registration",
-        error: error.message,
-      });
+    res.status().json({
+      message: "An error occured during registration",
+      error: error.message,
+    });
   }
+};
+
+// Login
+exports.loginPatient = async () => {
+  // Fetching email and password from request body
+  const { email, password } = req.body;
 };
