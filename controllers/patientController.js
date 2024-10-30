@@ -61,7 +61,7 @@ exports.loginPatient = async () => {
       [email]
     );
     if (patient.length === 0) {
-      return res.status(400).json({ message: "The user already exist! " });
+      return res.status(400).json({ message: "The does not already exist! " });
     }
   } catch (error) {}
 };
