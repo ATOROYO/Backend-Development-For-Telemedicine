@@ -87,3 +87,15 @@ exports.loginPatient = async () => {
     });
   }
 };
+
+// Logout
+exports.logoutPatient = (req, res) => {
+  res.session.destroy((err) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ message: "An error occured", error: err.message });
+    }
+    return res.status(200).json({ message: "Successfully logged out" });
+  });
+};
