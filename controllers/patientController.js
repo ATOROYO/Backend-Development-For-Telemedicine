@@ -53,4 +53,15 @@ exports.registerPatient = async (req, res) => {
 exports.loginPatient = async () => {
   // Fetching email and password from request body
   const { email, password } = req.body;
+
+  try {
+    // Check if patient exist
+    const [patient] = await db.execute(
+      "SELECT email FROM patients WHERE EMAIL = ?",
+      [email]
+    );
+    if (patient.length === 0) {
+      return res.status(400).json({ message: "The user already exist! " });
+    }
+  } catch (error) {}
 };
