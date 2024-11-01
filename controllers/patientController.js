@@ -7,7 +7,7 @@ const { validationResult } = require("express-validator");
 exports.registerPatient = async (req, res) => {
   const errors = validationResult(req);
 
-  // Check if any erros present in validation
+  // Check if any errors present in validation
   if (!errors.isEmpty()) {
     return res
       .status(400)
@@ -131,4 +131,12 @@ exports.getPatient = async (req, res) => {
 };
 
 // Update user information
-exports.updatePatient = async () => {};
+exports.updatePatient = async (req, res) => {
+  const errors = validationResult(req);
+  // Check if any errors present in validation
+  if (!errors.isEmpty()) {
+    return res
+      .status(400)
+      .json({ message: "Please correct input errors", errors: errors.array() });
+  }
+};
