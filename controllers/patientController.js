@@ -143,9 +143,18 @@ exports.updatePatient = async (req, res) => {
   // Fetch user details from request body
   const { firstName, lastName, email, phone, password } = req.body;
 
+  // Prepare our data - hash the password
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   if (!req.session.patientId) {
     return res
       .status(401)
       .json({ message: "Unauthorized user, please login to continue" });
   }
+  try {
+    await db.execute(
+      "UPDATE patient SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?",
+      [firstName, lastName, email, phone, hashedPassword, req.session.patientId]
+    );
+  } catch (error) {}
 };
