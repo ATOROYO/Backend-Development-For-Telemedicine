@@ -6,3 +6,5 @@ const {
   logoutPatient,
   updatePateint,
 } = require("../controllers/patientController");
+const { check } = require("express-validator");
+const router = express.Router();
