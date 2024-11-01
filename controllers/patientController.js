@@ -103,7 +103,7 @@ exports.logoutPatient = (req, res) => {
 // Get user information for editing
 exports.getPatient = async (req, res) => {
   // Check whether user is loged in / authorised
-  if (!req.session.email) {
+  if (!req.session.patientId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
