@@ -24,3 +24,6 @@ router.post(
 
 // Login route
 router.post("/login", loginPatient);
+
+// Get  patient route
+router.get("/patient", getPatient);
