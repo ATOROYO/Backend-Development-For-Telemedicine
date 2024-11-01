@@ -156,5 +156,8 @@ exports.updatePatient = async (req, res) => {
       "UPDATE patient SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?",
       [firstName, lastName, email, phone, hashedPassword, req.session.patientId]
     );
+    return res
+      .status(200)
+      .json({ message: "User detail updated successfully" });
   } catch (error) {}
 };
