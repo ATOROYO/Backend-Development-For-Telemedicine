@@ -14,4 +14,5 @@ router.post("/register", [
   check("first_name", "First name is require").not().isEmpty(),
   check("last_name", "Last name is require").not().isEmpty(),
   check("email", "Please enter a valid email").isEmail(),
+  check("phone", "Please enter a valid phone number").matches(/^\d{10}$/),
 ]);
