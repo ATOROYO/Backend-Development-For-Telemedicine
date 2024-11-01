@@ -101,7 +101,7 @@ exports.logoutPatient = (req, res) => {
 };
 
 // Get user information for editing
-exports.updatePatient = async (req, res) => {
+exports.getPatient = async (req, res) => {
   // Check whether user is loged in / authorised
   if (!req.session.email) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -117,19 +117,15 @@ exports.updatePatient = async (req, res) => {
       return res.status(400).json({ message: "User not found! " });
     }
 
-    return res
-      .status(200)
-      .json({
-        message: "Patient details fetched for update",
-        patient: patient[0],
-      });
+    return res.status(200).json({
+      message: "Patient details fetched for update",
+      patient: patient[0],
+    });
   } catch (error) {
     console.error(error);
-    return res
-      .status(500)
-      .json({
-        message: "An error occured while fetching patient details",
-        error: error.message,
-      });
+    return res.status(500).json({
+      message: "An error occured while fetching patient details",
+      error: error.message,
+    });
   }
 };
