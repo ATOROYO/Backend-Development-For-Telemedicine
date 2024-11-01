@@ -129,3 +129,6 @@ exports.getPatient = async (req, res) => {
     });
   }
 };
+
+// Update user information
+exports.updatePatient = async () => {};
