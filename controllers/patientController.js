@@ -88,7 +88,7 @@ exports.loginPatient = async () => {
   }
 };
 
-// Logout
+// Logout the patient
 exports.logoutPatient = (req, res) => {
   res.session.destroy((err) => {
     if (err) {
