@@ -152,6 +152,7 @@ exports.updatePatient = async (req, res) => {
       .json({ message: "Unauthorized user, please login to continue" });
   }
   try {
+    // Update the patient details
     await db.execute(
       "UPDATE patient SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?",
       [firstName, lastName, email, phone, hashedPassword, req.session.patientId]
