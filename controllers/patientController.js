@@ -159,5 +159,10 @@ exports.updatePatient = async (req, res) => {
     return res
       .status(200)
       .json({ message: "User detail updated successfully" });
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: "An error occur during update!", error: error.message });
+  }
 };
