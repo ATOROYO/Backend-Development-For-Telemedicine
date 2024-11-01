@@ -12,5 +12,6 @@ const router = express.Router();
 // Registration
 router.post("/register", [
   check("first_name", "First name is require").not().isEmpty(),
-  check("first_name", "First name is require").not().isEmpty(),
+  check("last_name", "Last name is require").not().isEmpty(),
+  check("email", "Please enter a valid email").isEmail(),
 ]);
