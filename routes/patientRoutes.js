@@ -21,3 +21,6 @@ router.post(
   ],
   registerPatient
 );
+
+// Login route
+router.post("/login", loginPatient);
