@@ -139,4 +139,13 @@ exports.updatePatient = async (req, res) => {
       .status(400)
       .json({ message: "Please correct input errors", errors: errors.array() });
   }
+
+  // Fetch user details from request body
+  const { firstName, lastName, email, phone, password } = req.body;
+
+  if (!req.session.patientId) {
+    return res
+      .status(401)
+      .json({ message: "Unauthorized user, please login to continue" });
+  }
 };
