@@ -42,4 +42,7 @@ router.put(
   updatePateint
 );
 
+// Logout patient route
+router.get("/logout", logoutPatient);
+
 module.exports = router;
