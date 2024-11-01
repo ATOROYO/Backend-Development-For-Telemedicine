@@ -29,7 +29,7 @@ router.post("/login", loginPatient);
 // Get  patient route
 router.get("/patient", getPatient);
 
-// Update the patient
+// Update the patient route
 router.put(
   "/patient/update",
   [
