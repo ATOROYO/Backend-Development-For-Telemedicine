@@ -130,7 +130,7 @@ exports.getPatient = async (req, res) => {
   }
 };
 
-// Update user information
+// Update the patient information
 exports.updatePatient = async (req, res) => {
   const errors = validationResult(req);
   // Check if any errors present in validation
