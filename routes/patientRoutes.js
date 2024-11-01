@@ -41,3 +41,5 @@ router.put(
   ],
   updatePateint
 );
+
+module.exports = router;
