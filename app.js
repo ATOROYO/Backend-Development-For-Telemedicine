@@ -1,5 +1,5 @@
 // Imported modules
-const db = require("./config/db");
+const db = require("./config/db"); // For database connection
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
