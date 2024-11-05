@@ -1,7 +1,7 @@
 // Imported moules
 const db = require("../config/db"); // Database connection
 const bcrypt = require("bcryptjs"); // Hashing passwords
-const { validationResult } = require("express-validator");
+const { validationResult } = require("express-validator"); // Validator
 
 // Register a patient
 exports.registerPatient = async (req, res) => {
