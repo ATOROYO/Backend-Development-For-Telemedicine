@@ -7,7 +7,7 @@ const {
   updatePateint,
   getPatient,
 } = require("../controllers/patientController"); // Internal modules
-const { check } = require("express-validator");
+const { check } = require("express-validator"); // Validator
 const router = express.Router();
 
 // Registration
