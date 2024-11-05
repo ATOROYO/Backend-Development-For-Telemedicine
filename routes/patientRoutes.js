@@ -8,7 +8,7 @@ const {
   getPatient,
 } = require("../controllers/patientController"); // Internal modules
 const { check } = require("express-validator"); // Validator
-const router = express.Router();
+const router = express.Router(); // Help in directing requests
 
 // Registration
 router.post(
