@@ -95,6 +95,7 @@ exports.loginPatient = async () => {
 exports.logoutPatient = (req, res) => {
   res.session.destroy((err) => {
     if (err) {
+      console.error(err);
       return res
         .status(500)
         .json({ message: "An error occured", error: err.message });
