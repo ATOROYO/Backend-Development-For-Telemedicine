@@ -136,6 +136,12 @@ exports.getPatient = async (req, res) => {
 
 // Update the patient information
 exports.updatePatient = async (req, res) => {
+  if (!req.session.patientId) {
+    return res
+      .status(401)
+      .json({ message: "Unauthorized user, please login to continue" });
+  }
+
   const errors = validationResult(req);
   // Check if any errors present in validation
   if (!errors.isEmpty()) {
@@ -150,11 +156,6 @@ exports.updatePatient = async (req, res) => {
   // Prepare our data - hash the password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  if (!req.session.patientId) {
-    return res
-      .status(401)
-      .json({ message: "Unauthorized user, please login to continue" });
-  }
   try {
     // Update the patient details
     await db.execute(
