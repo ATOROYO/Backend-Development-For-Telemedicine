@@ -1,5 +1,5 @@
 // Imported moules
-const db = require("../config/db");
+const db = require("../config/db"); // Database connection
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
