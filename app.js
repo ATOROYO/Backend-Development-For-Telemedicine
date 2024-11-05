@@ -2,7 +2,7 @@
 const db = require("./config/db"); // For database connection
 const express = require("express"); // For the web
 const bodyParser = require("body-parser"); // Capturing form data
-const session = require("express-session");
+const session = require("express-session"); // Seession management
 const MySQLStore = require("connect-mysql2")(session);
 const dotenv = require("dotenv");
 
