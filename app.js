@@ -1,6 +1,6 @@
 // Imported modules
 const db = require("./config/db"); // For database connection
-const express = require("express");
+const express = require("express"); // For the web
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const MySQLStore = require("connect-mysql2")(session);
