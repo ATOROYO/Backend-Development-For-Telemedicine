@@ -77,7 +77,7 @@ exports.loginPatient = async () => {
     req.session.patientId = patient[0].patientId;
     req.session.firstName = patient[0].firstName;
     req.session.lastName = patient[0].lastName;
-    res.session.email = patient[0].email;
+    req.session.email = patient[0].email;
 
     return res.status.json({ message: "Successfull login" });
 
