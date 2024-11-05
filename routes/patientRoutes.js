@@ -6,7 +6,7 @@ const {
   logoutPatient,
   updatePateint,
   getPatient,
-} = require("../controllers/patientController");
+} = require("../controllers/patientController"); // Internal modules
 const { check } = require("express-validator");
 const router = express.Router();
 
