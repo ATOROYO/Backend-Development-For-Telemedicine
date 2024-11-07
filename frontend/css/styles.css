@@ -2,3 +2,7 @@ label,
 input {
   display: block;
 }
+
+.message {
+  text-align: center;
+}
