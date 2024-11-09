@@ -10,4 +10,5 @@ div {
 
 .message {
   text-align: center;
+  color: hsl(157, 100%, 49%);
 }
