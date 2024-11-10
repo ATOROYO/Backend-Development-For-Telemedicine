@@ -48,7 +48,7 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
 });
 
 // Login form
-document.getElementById('registerForm').addEventListener('submit', async e => {
+document.getElementById('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
 
   const firstName = document.getElementById('regFirstName').value;
