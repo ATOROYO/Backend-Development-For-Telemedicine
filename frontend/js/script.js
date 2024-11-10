@@ -78,4 +78,14 @@ async function getPatient() {
   const response = await fetch('/telemedicine/api/patients/patient', {
     method: 'GET',
   });
+
+  if (response.status === 200) {
+    const result = await response.json();
+    pFirstNameSpan.textContent = result.patient.firstName;
+    pLastNameSpan.textContent = result.patient.lastName;
+    patientEmail.textContent = result.patient.email;
+    patientSection.style.display = 'block';
+  } else {
+    showMessage('failed', result.message);
+  }
 }
