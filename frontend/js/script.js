@@ -41,6 +41,6 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   const result = await response.json;
 
   if (result.status === 201) {
-    showMessage;
+    showMessage('success', result.message);
   }
 });
