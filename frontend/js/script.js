@@ -116,3 +116,18 @@ document.getElementById('updateForm').addEventListener('submit', async e => {
     showMessage('failed', result.result);
   }
 });
+
+// Logout
+logoutButton.addEventListener('click', async () => {
+  const response = await fetch('/telemedicine/api/patients', {
+    method: 'GET',
+  });
+
+  if (response.status === 200) {
+    const result = response.json();
+    showMessage('success', result.message);
+    patientSection.style.display = 'none';
+  } else {
+    showMessage('failed', result.message);
+  }
+});
