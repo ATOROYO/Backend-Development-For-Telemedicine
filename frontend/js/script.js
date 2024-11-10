@@ -55,7 +55,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
   const lastName = document.getElementById('loginLastName').value;
   const email = document.getElementById('loginEmail').value;
   const phone = document.getElementById('loginPhone').value;
-  const password = document.getElementById('regPassword').value;
+  const password = document.getElementById('loginPassword').value;
 
   //   Transit the data
   const response = await fetch('/telemedicine/api/patient/register', {
