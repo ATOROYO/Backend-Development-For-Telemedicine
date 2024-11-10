@@ -32,4 +32,6 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ firstName, lastName, email, phone, password }),
   });
+
+  const result = await response.json;
 });
