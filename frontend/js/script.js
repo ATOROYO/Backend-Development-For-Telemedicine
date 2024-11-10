@@ -109,8 +109,9 @@ document.getElementById('updateForm').addEventListener('submit', async e => {
 
   const result = await response.json();
 
-  if (result.status === 201) {
+  if (result.status === 200) {
     showMessage('success', result.message);
+    getPatient();
   } else {
     showMessage('failed', result.result);
   }
