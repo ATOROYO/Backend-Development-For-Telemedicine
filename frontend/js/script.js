@@ -8,7 +8,12 @@ const logoutButton = document.getElementById('logoutbutton');
 
 function showMessage(type, text) {
   divMessage.style.display = 'block';
-  divMessage.style.color = red;
+
+  if (type == 'succes') {
+    divMessage.style.color = 'green';
+  } else {
+    divMessage.style.color = 'red';
+  }
   divMessage.textContent = text;
 
   setTimeout(() => {
@@ -34,4 +39,8 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   });
 
   const result = await response.json;
+
+  if (result.status === 201) {
+    showMessage;
+  }
 });
