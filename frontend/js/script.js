@@ -10,4 +10,8 @@ function showMessage(type, text) {
   divMessage.style.display = 'block';
   divMessage.style.color = red;
   divMessage.textContent = text;
+
+  setTimeout(() => {
+    divMessage.style.display = 'none';
+  }, 3000);
 }
