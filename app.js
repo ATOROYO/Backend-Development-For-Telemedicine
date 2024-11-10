@@ -14,6 +14,7 @@ dotenv.config();
 const app = express();
 
 // Configure middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json()); // Use json
 app.use(bodyParser.urlencoded({ extended: true })); // Capture form data
 
@@ -41,6 +42,8 @@ app.use(
 
 // route
 app.use('/telemedicine/api/patients', require('./routes/patientRoutes'));
+
+app.get('', () => {});
 
 const PORT = process.env.PORT || 3000;
 
