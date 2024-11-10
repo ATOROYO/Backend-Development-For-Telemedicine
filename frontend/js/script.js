@@ -64,7 +64,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
     body: JSON.stringify({ firstName, lastName, email, phone, password }),
   });
 
-  const result = await response.json;
+  const result = await response.json();
 
   if (result.status === 201) {
     showMessage('success', result.message);
@@ -89,3 +89,29 @@ async function getPatient() {
     showMessage('failed', result.message);
   }
 }
+
+// Update patient
+document.getElementById('registerForm').addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const firstName = document.getElementById('regFirstName').value;
+  const lastName = document.getElementById('regLastName').value;
+  const email = document.getElementById('regEmail').value;
+  const phone = document.getElementById('regPhone').value;
+  const password = document.getElementById('regPassword').value;
+
+  //   Transit the data
+  const response = await fetch('/telemedicine/api/patients/patient/update', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ firstName, lastName, email, phone, password }),
+  });
+
+  const result = await response.json();
+
+  if (result.status === 201) {
+    showMessage('success', result.message);
+  } else {
+    showMessage('failed', result.result);
+  }
+});
