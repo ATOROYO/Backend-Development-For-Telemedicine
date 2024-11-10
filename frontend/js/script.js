@@ -94,8 +94,8 @@ async function getPatient() {
 document.getElementById('updateForm').addEventListener('submit', async e => {
   e.preventDefault();
 
-  const firstName = document.getElementById('regFirstName').value;
-  const lastName = document.getElementById('regLastName').value;
+  const firstName = document.getElementById('updateFirstName').value;
+  const lastName = document.getElementById('updateLastName').value;
   const email = document.getElementById('regEmail').value;
   const phone = document.getElementById('regPhone').value;
   const password = document.getElementById('regPassword').value;
