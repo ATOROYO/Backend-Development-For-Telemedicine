@@ -5,6 +5,7 @@ const bodyParser = require('body-parser'); // Capturing form data
 const session = require('express-session'); // Seession management
 const MySQLStore = require('connect-mysql2')(session); // Storage for session management
 const dotenv = require('dotenv'); // Managing environment variables
+const path = require('path');
 
 // Initialize env management
 dotenv.config();
