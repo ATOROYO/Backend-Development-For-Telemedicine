@@ -15,3 +15,8 @@ function showMessage(type, text) {
     divMessage.style.display = 'none';
   }, 3000);
 }
+
+// Registration form
+document.getElementById('registerForm').addEventListener('submit', async e => {
+  e.preventDefault();
+});
