@@ -72,3 +72,8 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
     showMessage('failed', result.result);
   }
 });
+
+// Function for fetching user details
+async function getPatient() {
+  const response = await fetch('');
+}

@@ -1,10 +1,10 @@
 // Imported modules
-const db = require("./config/db"); // For database connection
-const express = require("express"); // For the web
-const bodyParser = require("body-parser"); // Capturing form data
-const session = require("express-session"); // Seession management
-const MySQLStore = require("connect-mysql2")(session); // Storage for session management
-const dotenv = require("dotenv"); // Managing environment variables
+const db = require('./config/db'); // For database connection
+const express = require('express'); // For the web
+const bodyParser = require('body-parser'); // Capturing form data
+const session = require('express-session'); // Seession management
+const MySQLStore = require('connect-mysql2')(session); // Storage for session management
+const dotenv = require('dotenv'); // Managing environment variables
 
 // Initialize env management
 dotenv.config();
@@ -39,7 +39,7 @@ app.use(
 );
 
 // route
-app.use("/telemedicine/api/patient", require("./routes/patientRoutes"));
+app.use('/telemedicine/api/patients', require('./routes/patientRoutes'));
 
 const PORT = process.env.PORT || 3000;
 
