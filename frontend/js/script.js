@@ -27,5 +27,9 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   const password = document.getElementById('regPassword').value;
 
   //   Transit the data
-  const response = await fetch('/telemedicine/api/patient/register', {});
+  const response = await fetch('/telemedicine/api/patient/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ firstName, lastName, email, phone, password }),
+  });
 });
