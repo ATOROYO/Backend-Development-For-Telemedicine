@@ -96,9 +96,9 @@ document.getElementById('updateForm').addEventListener('submit', async e => {
 
   const firstName = document.getElementById('updateFirstName').value;
   const lastName = document.getElementById('updateLastName').value;
-  const email = document.getElementById('regEmail').value;
-  const phone = document.getElementById('regPhone').value;
-  const password = document.getElementById('regPassword').value;
+  const email = document.getElementById('updateEmail').value;
+  const phone = document.getElementById('updatePhone').value;
+  const password = document.getElementById('updatePassword').value;
 
   //   Transit the data
   const response = await fetch('/telemedicine/api/patients/patient/update', {
