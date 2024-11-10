@@ -54,7 +54,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
   const firstName = document.getElementById('loginFirstName').value;
   const lastName = document.getElementById('loginLastName').value;
   const email = document.getElementById('loginEmail').value;
-  const phone = document.getElementById('regPhone').value;
+  const phone = document.getElementById('loginPhone').value;
   const password = document.getElementById('regPassword').value;
 
   //   Transit the data
