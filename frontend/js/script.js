@@ -5,3 +5,9 @@ const pFirstNameSpan = document.getElementById('pFirstName');
 const pLastNameSpan = document.getElementById('pLastName');
 const patientEmail = document.getElementById('pEmail');
 const logoutButton = document.getElementById('logoutbutton');
+
+function showMessage(type, text) {
+  divMessage.style.display = 'block';
+  divMessage.style.color = red;
+  divMessage.textContent = text;
+}
