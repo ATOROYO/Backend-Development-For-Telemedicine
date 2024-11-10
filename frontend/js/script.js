@@ -52,7 +52,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
 
   const firstName = document.getElementById('loginFirstName').value;
-  const lastName = document.getElementById('regLastName').value;
+  const lastName = document.getElementById('loginLastName').value;
   const email = document.getElementById('regEmail').value;
   const phone = document.getElementById('regPhone').value;
   const password = document.getElementById('regPassword').value;
