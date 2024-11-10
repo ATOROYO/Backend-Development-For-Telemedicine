@@ -75,5 +75,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
 
 // Function for fetching user details
 async function getPatient() {
-  const response = await fetch('');
+  const response = await fetch('/telemedicine/api/patients/patient', {
+    method: 'GET',
+  });
 }
