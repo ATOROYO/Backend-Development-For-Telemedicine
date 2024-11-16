@@ -84,7 +84,7 @@ exports.loginPatient = async () => {
     // Login error
   } catch (error) {
     console.error(error);
-    res.status().json({
+    res.status(500).json({
       message: 'An error occured during login',
       error: error.message,
     });
