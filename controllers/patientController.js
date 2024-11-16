@@ -1,7 +1,7 @@
 // Imported moules
-const db = require("../config/db"); // Database connection
-const bcrypt = require("bcryptjs"); // Hashing passwords
-const { validationResult } = require("express-validator"); // Validator
+const db = require('../config/db'); // Database connection
+const bcrypt = require('bcryptjs'); // Hashing passwords
+const { validationResult } = require('express-validator'); // Validator
 
 // Register a patient
 exports.registerPatient = async (req, res) => {
@@ -11,7 +11,7 @@ exports.registerPatient = async (req, res) => {
   if (!errors.isEmpty()) {
     return res
       .status(400)
-      .json({ message: "Please correct input errors", errors: errors.array() });
+      .json({ message: 'Please correct input errors', errors: errors.array() });
   }
 
   // Fetching input parameters from the request body
@@ -20,11 +20,11 @@ exports.registerPatient = async (req, res) => {
   try {
     // Check if patient exist
     const [patient] = await db.execute(
-      "SELECT email FROM patients WHERE EMAIL = ?",
+      'SELECT email FROM patients WHERE EMAIL = ?',
       [email]
     );
     if (patient.length > 0) {
-      return res.status(400).json({ message: "The user already exist! " });
+      return res.status(400).json({ message: 'The user already exist! ' });
     }
 
     // Prepare our data - hash the password
@@ -32,18 +32,18 @@ exports.registerPatient = async (req, res) => {
 
     // Insert the record
     awaitdb.execute(
-      "INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?",
+      'INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?',
       [firstName, lastName, email, phone, password]
     );
 
     // Response
     return res
       .status(201)
-      .json({ message: "New user registered successfully." });
+      .json({ message: 'New user registered successfully.' });
   } catch (error) {
     console.error(error);
     res.status().json({
-      message: "An error occured during registration",
+      message: 'An error occured during registration',
       error: error.message,
     });
   }
@@ -57,11 +57,11 @@ exports.loginPatient = async () => {
   try {
     // Check if patient exist
     const [patient] = await db.execute(
-      "SELECT email FROM patients WHERE EMAIL = ?",
+      'SELECT email FROM patients WHERE EMAIL = ?',
       [email]
     );
     if (patient.length === 0) {
-      return res.status(400).json({ message: "The does not exist! " });
+      return res.status(400).json({ message: 'The does not exist! ' });
     }
 
     // Check the password
@@ -70,7 +70,7 @@ exports.loginPatient = async () => {
     if (!isMatch) {
       return res
         .status(400)
-        .json({ message: "Invalid email/password combination" });
+        .json({ message: 'Invalid email/password combination' });
     }
 
     // Create a session
@@ -79,13 +79,13 @@ exports.loginPatient = async () => {
     req.session.lastName = patient[0].lastName;
     req.session.email = patient[0].email;
 
-    return res.status.json({ message: "Successfull login" });
+    return res.status.json({ message: 'Successfull login' });
 
     // Login error
   } catch (error) {
     console.error(error);
     res.status().json({
-      message: "An error occured during login",
+      message: 'An error occured during login',
       error: error.message,
     });
   }
@@ -93,14 +93,14 @@ exports.loginPatient = async () => {
 
 // Logout the patient
 exports.logoutPatient = (req, res) => {
-  res.session.destroy((err) => {
+  res.session.destroy(err => {
     if (err) {
       console.error(err);
       return res
         .status(500)
-        .json({ message: "An error occured", error: err.message });
+        .json({ message: 'An error occured', error: err.message });
     }
-    return res.status(200).json({ message: "Successfully logged out" });
+    return res.status(200).json({ message: 'Successfully logged out' });
   });
 };
 
@@ -108,27 +108,27 @@ exports.logoutPatient = (req, res) => {
 exports.getPatient = async (req, res) => {
   // Check whether user is loged in / authorised
   if (!req.session.patientId) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
   try {
     // Fetch user
     const [patient] = await db.execute(
-      "SELECT * FROM patients WHERE EMAIL = patient_id",
+      'SELECT * FROM patients WHERE EMAIL = patient_id',
       [email]
     );
     if (patient.length === 0) {
-      return res.status(400).json({ message: "User not found! " });
+      return res.status(400).json({ message: 'User not found! ' });
     }
 
     return res.status(200).json({
-      message: "Patient details fetched for update",
+      message: 'Patient details fetched for update',
       patient: patient[0],
     });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      message: "An error occured while fetching patient details",
+      message: 'An error occured while fetching patient details',
       error: error.message,
     });
   }
@@ -139,7 +139,7 @@ exports.updatePatient = async (req, res) => {
   if (!req.session.patientId) {
     return res
       .status(401)
-      .json({ message: "Unauthorized user, please login to continue" });
+      .json({ message: 'Unauthorized user, please login to continue' });
   }
 
   const errors = validationResult(req);
@@ -147,7 +147,7 @@ exports.updatePatient = async (req, res) => {
   if (!errors.isEmpty()) {
     return res
       .status(400)
-      .json({ message: "Please correct input errors", errors: errors.array() });
+      .json({ message: 'Please correct input errors', errors: errors.array() });
   }
 
   // Fetch user details from request body
@@ -159,16 +159,16 @@ exports.updatePatient = async (req, res) => {
   try {
     // Update the patient details
     await db.execute(
-      "UPDATE patient SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?",
+      'UPDATE patient SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?',
       [firstName, lastName, email, phone, hashedPassword, req.session.patientId]
     );
     return res
       .status(200)
-      .json({ message: "User detail updated successfully" });
+      .json({ message: 'User detail updated successfully' });
   } catch (error) {
     console.error(error);
     return res
       .status(500)
-      .json({ message: "An error occur during update!", error: error.message });
+      .json({ message: 'An error occur during update!', error: error.message });
   }
 };
