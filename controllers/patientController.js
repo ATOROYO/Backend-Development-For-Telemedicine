@@ -31,7 +31,7 @@ exports.registerPatient = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the record
-    awaitdb.execute(
+    await db.execute(
       'INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?',
       [firstName, lastName, email, phone, password]
     );
