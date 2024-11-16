@@ -114,7 +114,7 @@ exports.getPatient = async (req, res) => {
   try {
     // Fetch user
     const [patient] = await db.execute(
-      'SELECT * FROM patients WHERE EMAIL = patient_id',
+      'SELECT * FROM patients WHERE patient_id = ?',
       [email]
     );
     if (patient.length === 0) {
