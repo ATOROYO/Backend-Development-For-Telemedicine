@@ -4,7 +4,7 @@ const {
   registerPatient,
   loginPatient,
   logoutPatient,
-  updatePateint,
+  updatePatient,
   getPatient,
 } = require('../controllers/patientController'); // Internal modules
 const { check } = require('express-validator'); // Validator
@@ -39,7 +39,7 @@ router.put(
     check('phone', 'Please enter a valid phone number').matches(/^\d{10}$/),
     check('password', 'Please must be 6 characters long').isLength({ min: 6 }),
   ],
-  updatePateint
+  updatePatient
 );
 
 // Logout patient route
