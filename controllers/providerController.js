@@ -15,7 +15,7 @@ exports.registerProvider = async (req, res) => {
   }
 
   // Fetching input parameters from the request body
-  const { firstName, lastName, email, phone, password } = req.body;
+  const { firstName, lastName, specialty, email, phone, password } = req.body;
 
   try {
     // Check if patient exist
