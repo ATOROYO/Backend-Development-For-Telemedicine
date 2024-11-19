@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs'); // Hashing passwords
 const { validationResult } = require('express-validator'); // Validator
 
 // Register a patient
-exports.registerPatient = async (req, res) => {
+exports.registerProvider = async (req, res) => {
   const errors = validationResult(req);
 
   // Check if any errors present in validation
