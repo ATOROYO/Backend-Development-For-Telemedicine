@@ -19,7 +19,7 @@ exports.registerProvider = async (req, res) => {
 
   try {
     // Check if patient exist
-    const [patient] = await db.execute(
+    const [provider] = await db.execute(
       'SELECT email FROM patients WHERE EMAIL = ?',
       [email]
     );
