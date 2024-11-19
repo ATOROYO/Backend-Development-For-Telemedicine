@@ -32,8 +32,8 @@ exports.registerProvider = async (req, res) => {
 
     // Insert the record
     await db.execute(
-      'INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?',
-      [firstName, lastName, email, phone, password]
+      'INSERT INTO patients (first_name,last_name, specialty, email, phone, password) VALUES (?,?,?,?,?',
+      [firstName, lastName, specialty, email, phone, password]
     );
 
     // Response
