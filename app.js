@@ -43,6 +43,7 @@ app.use(
 
 // route
 app.use('/telemedicine/api/patients', require('./routes/patientRoutes'));
+app.use('/telemedicine/api/providers', require('./routes/providerRoutes'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
