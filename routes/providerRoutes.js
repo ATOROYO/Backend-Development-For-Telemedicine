@@ -26,7 +26,7 @@ router.post(
 // Login route
 router.post('/login', loginProvider);
 
-// Get  patient route
+// Get  provider route
 router.get('/provider', getProvider);
 
 router.put(
