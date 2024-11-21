@@ -3,11 +3,11 @@ const { check } = require('express-validator'); // Validator
 const router = express.Router(); // Help in directing requests
 const {
   registerProvider,
-  loginPatient,
-  logoutPatient,
-  updatePatient,
-  getPatient,
-} = require('../controllers/patientController'); // Internal modules
+  loginProvider,
+  logoutProvider,
+  updateProvider,
+  getProvider,
+} = require('../controllers/providerController'); // Internal modules
 
 // Registration
 router.post(
