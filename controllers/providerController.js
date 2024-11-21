@@ -20,10 +20,10 @@ exports.registerProvider = async (req, res) => {
   try {
     // Check if provider exist
     const [provider] = await db.execute(
-      'SELECT email FROM patients WHERE email = ?',
+      'SELECT email FROM providers WHERE email = ?',
       [email]
     );
-    if (patient.length > 0) {
+    if (provider.length > 0) {
       return res.status(400).json({ message: 'The user already exist! ' });
     }
 
@@ -32,7 +32,7 @@ exports.registerProvider = async (req, res) => {
 
     // Insert the record
     await db.execute(
-      'INSERT INTO patients (first_name,last_name, specialty, email, phone, password) VALUES (?,?,?,?,?',
+      'INSERT INTO providers (first_name,last_name, specialty, email, phone, password) VALUES (?,?,?,?,?',
       [firstName, lastName, specialty, email, phone, password]
     );
 
@@ -56,16 +56,16 @@ exports.loginProvider = async () => {
 
   try {
     // Check if provider exist
-    const [patient] = await db.execute(
+    const [provider] = await db.execute(
       'SELECT * FROM providers WHERE email = ?',
       [email]
     );
-    if (patient.length === 0) {
+    if (provider.length === 0) {
       return res.status(400).json({ message: 'The user does not exist! ' });
     }
 
     // Check the password
-    const isMatch = await bcrypt.compare(password, patient[0].password);
+    const isMatch = await bcrypt.compare(password, provider[0].password);
 
     if (!isMatch) {
       return res
@@ -118,13 +118,13 @@ exports.getProvider = async (req, res) => {
       'SELECT * FROM providers WHERE provider_id = ?',
       [email]
     );
-    if (patient.length === 0) {
+    if (provider.length === 0) {
       return res.status(400).json({ message: 'User not found! ' });
     }
 
     return res.status(200).json({
       message: 'Provider details fetched for update',
-      patient: patient[0],
+      provider: provider[0],
     });
   } catch (error) {
     console.error(error);
