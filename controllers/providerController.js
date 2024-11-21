@@ -134,3 +134,50 @@ exports.getProvider = async (req, res) => {
     });
   }
 };
+
+// Update the provider information
+exports.updateProvider = async (req, res) => {
+  if (!req.session.providerId) {
+    return res
+      .status(401)
+      .json({ message: 'Unauthorized user, please login to continue' });
+  }
+
+  const errors = validationResult(req);
+  // Check if any errors present in validation
+  if (!errors.isEmpty()) {
+    return res
+      .status(400)
+      .json({ message: 'Please correct input errors', errors: errors.array() });
+  }
+
+  // Fetch user details from request body
+  const { firstName, lastName, specialty, email, phone, password } = req.body;
+
+  // Prepare our data - hash the password
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    // Update the patient details
+    await db.execute(
+      'UPDATE providers SET first_name = ?, last_name = ?, specialty = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?',
+      [
+        firstName,
+        lastName,
+        specialty,
+        email,
+        phone,
+        hashedPassword,
+        req.session.patientId,
+      ]
+    );
+    return res
+      .status(200)
+      .json({ message: 'User detail updated successfully' });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: 'An error occur during update!', error: error.message });
+  }
+};
