@@ -26,6 +26,9 @@ router.post(
 // Login route
 router.post('/login', loginProvider);
 
+// Get  patient route
+router.get('/provider', getProvider);
+
 router.put(
   '/provider/update',
   [
