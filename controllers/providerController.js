@@ -78,7 +78,7 @@ exports.loginProvider = async () => {
     req.session.firstName = provider[0].firstName;
     req.session.lastName = provider[0].lastName;
     req.session.email = provider[0].email;
-    req.session.phone = patient[0].phone;
+    req.session.phone = provider[0].phone;
 
     return res.status(200).json({ message: 'Successfull login' });
 
