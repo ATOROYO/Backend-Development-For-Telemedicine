@@ -3,7 +3,7 @@ const db = require('../config/db'); // Database connection
 const bcrypt = require('bcryptjs'); // Hashing passwords
 const { validationResult } = require('express-validator'); // Validator
 
-// Register a patient
+// Register a provider
 exports.registerProvider = async (req, res) => {
   const errors = validationResult(req);
 
