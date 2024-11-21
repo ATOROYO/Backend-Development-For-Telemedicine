@@ -44,3 +44,5 @@ router.put(
 
 // Logout provider route
 router.get('/logout', logoutProvider);
+
+module.exports = router;
