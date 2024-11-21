@@ -74,10 +74,10 @@ exports.loginProvider = async () => {
     }
 
     // Create a session
-    req.session.patientId = patient[0].patientId;
+    req.session.providerId = patient[0].providerId;
     req.session.firstName = patient[0].firstName;
     req.session.lastName = patient[0].lastName;
-    req.session.email = patient[0].email;
+    req.session.email = provider[0].email;
     req.session.phone = patient[0].phone;
 
     return res.status(200).json({ message: 'Successfull login' });
