@@ -38,3 +38,6 @@ router.put(
   ],
   updateProvider
 );
+
+// Logout provider route
+router.get('/logout', logoutProvider);
