@@ -50,7 +50,7 @@ exports.registerProvider = async (req, res) => {
 };
 
 // Login the provider
-exports.loginPatient = async () => {
+exports.loginProvider = async () => {
   // Fetching email and password from request body
   const { email, password } = req.body;
 
