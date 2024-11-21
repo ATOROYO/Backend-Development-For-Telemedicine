@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator'); // Validator
 const router = express.Router(); // Help in directing requests
 const {
-  registerPatient,
+  registerProvider,
   loginPatient,
   logoutPatient,
   updatePatient,
@@ -22,3 +22,6 @@ router.post(
   ],
   registerProvider
 );
+
+// Login route
+router.post('/login', loginProvider);
