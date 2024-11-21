@@ -92,8 +92,8 @@ exports.loginProvider = async () => {
   }
 };
 
-// Logout the patient
-exports.logoutPatient = (req, res) => {
+// Logout the provider
+exports.logoutProvider = (req, res) => {
   res.session.destroy(err => {
     if (err) {
       console.error(err);
