@@ -76,7 +76,7 @@ exports.loginProvider = async () => {
     // Create a session
     req.session.providerId = provider[0].providerId;
     req.session.firstName = provider[0].firstName;
-    req.session.lastName = patient[0].lastName;
+    req.session.lastName = provider[0].lastName;
     req.session.email = provider[0].email;
     req.session.phone = patient[0].phone;
 
