@@ -18,7 +18,7 @@ exports.registerProvider = async (req, res) => {
   const { firstName, lastName, specialty, email, phone, password } = req.body;
 
   try {
-    // Check if patient exist
+    // Check if provider exist
     const [provider] = await db.execute(
       'SELECT email FROM patients WHERE email = ?',
       [email]
@@ -55,7 +55,7 @@ exports.loginProvider = async () => {
   const { email, password } = req.body;
 
   try {
-    // Check if patient exist
+    // Check if provider exist
     const [patient] = await db.execute(
       'SELECT * FROM providers WHERE email = ?',
       [email]
