@@ -48,3 +48,46 @@ exports.registerProvider = async (req, res) => {
     });
   }
 };
+
+// Login the patient
+exports.loginPatient = async () => {
+  // Fetching email and password from request body
+  const { email, password } = req.body;
+
+  try {
+    // Check if patient exist
+    const [patient] = await db.execute(
+      'SELECT * FROM patients WHERE email = ?',
+      [email]
+    );
+    if (patient.length === 0) {
+      return res.status(400).json({ message: 'The user does not exist! ' });
+    }
+
+    // Check the password
+    const isMatch = await bcrypt.compare(password, patient[0].password);
+
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ message: 'Invalid email/password combination' });
+    }
+
+    // Create a session
+    req.session.patientId = patient[0].patientId;
+    req.session.firstName = patient[0].firstName;
+    req.session.lastName = patient[0].lastName;
+    req.session.email = patient[0].email;
+    req.session.phone = patient[0].phone;
+
+    return res.status(200).json({ message: 'Successfull login' });
+
+    // Login error
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: 'An error occured during login',
+      error: error.message,
+    });
+  }
+};
