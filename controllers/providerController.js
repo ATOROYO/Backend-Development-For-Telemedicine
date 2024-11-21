@@ -57,7 +57,7 @@ exports.loginProvider = async () => {
   try {
     // Check if patient exist
     const [patient] = await db.execute(
-      'SELECT * FROM patients WHERE email = ?',
+      'SELECT * FROM providers WHERE email = ?',
       [email]
     );
     if (patient.length === 0) {
