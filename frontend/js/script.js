@@ -4,7 +4,7 @@ const patientSection = document.getElementById('patientSection');
 const pFirstNameSpan = document.getElementById('pFirstName');
 const pLastNameSpan = document.getElementById('pLastName');
 const patientEmail = document.getElementById('pEmail');
-const logoutButton = document.getElementById('logoutbutton');
+const logoutButton = document.getElementById('logoutButton');
 
 function showMessage(type, text) {
   divMessage.style.display = 'block';
@@ -31,19 +31,40 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   const phone = document.getElementById('regPhone').value;
   const password = document.getElementById('regPassword').value;
 
-  //   Transit the data
-  const response = await fetch('/telemedicine/api/patient/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ firstName, lastName, email, phone, password }),
-  });
+  try {
+    const response = await fetch('/telemedicine/api/patient/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName, lastName, email, phone, password }),
+    });
 
-  const result = await response.json;
+    // Check response status
+    if (!response.ok) {
+      const errorMessage = `Error: ${response.status} ${response.statusText}`;
+      console.error(errorMessage);
+      showMessage('failed', errorMessage);
+      return;
+    }
 
-  if (result.status === 201) {
-    showMessage('success', result.message);
-  } else {
-    showMessage('failed', result.result);
+    // Parse JSON response
+    let result;
+    try {
+      result = await response.json();
+    } catch (err) {
+      console.error('Failed to parse JSON:', err);
+      showMessage('failed', 'Invalid response from server.');
+      return;
+    }
+
+    // Handle result
+    if (result.status === 201) {
+      showMessage('success', result.message);
+    } else {
+      showMessage('failed', result.message || 'Registration failed.');
+    }
+  } catch (err) {
+    console.error('Network or server error:', err);
+    showMessage('failed', 'Unable to register. Please try again later.');
   }
 });
 

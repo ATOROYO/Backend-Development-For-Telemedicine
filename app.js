@@ -45,6 +45,10 @@ app.use(
 app.use('/telemedicine/api/patients', require('./routes/patientRoutes'));
 app.use('/telemedicine/api/providers', require('./routes/providerRoutes'));
 
+app.post('/telemedicine/api/patient/register', (req, res) => {
+  res.status(201).json({ message: 'User registered successfully!' });
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });

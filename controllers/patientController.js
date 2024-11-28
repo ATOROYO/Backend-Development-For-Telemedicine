@@ -18,13 +18,13 @@ exports.registerPatient = async (req, res) => {
   const { firstName, lastName, email, phone, password } = req.body;
 
   try {
-    // Check if patient exist
+    // Check if patient exists
     const [patient] = await db.execute(
       'SELECT email FROM patients WHERE email = ?',
       [email]
     );
     if (patient.length > 0) {
-      return res.status(400).json({ message: 'The user already exist! ' });
+      return res.status(400).json({ message: 'The user already exists!' });
     }
 
     // Prepare our data - hash the password
@@ -32,9 +32,11 @@ exports.registerPatient = async (req, res) => {
 
     // Insert the record
     await db.execute(
-      'INSERT INTO patients (first_name,last_name, email, phone, password) VALUES (?,?,?,?,?',
-      [firstName, lastName, email, phone, password]
+      'INSERT INTO patients (first_name, last_name, email, phone, password) VALUES (?,?,?,?,?)',
+      [firstName, lastName, email, phone, hashedPassword]
     );
+
+    console.log(firstName, lastName, email, phone, hashedPassword);
 
     // Response
     return res
@@ -42,8 +44,8 @@ exports.registerPatient = async (req, res) => {
       .json({ message: 'New user registered successfully.' });
   } catch (error) {
     console.error(error);
-    res.status().json({
-      message: 'An error occured during registration',
+    res.status(500).json({
+      message: 'An error occurred during registration',
       error: error.message,
     });
   }
