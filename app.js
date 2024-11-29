@@ -54,8 +54,16 @@ app.post('/telemedicine/api/patient/register', (req, res) => {
   res.status(201).json({ message: 'User registered successfully!' });
 });
 
-app.get('/index', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+// Dynamic route to catch other HTML files
+app.get('/:page', (req, res) => {
+  const page = req.params.page;
+  const filePath = path.join(__dirname, 'frontend', `${page}.html`);
+
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send('Page not found');
+  }
 });
 
 const PORT = process.env.PORT || 3000;
