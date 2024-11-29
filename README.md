@@ -101,8 +101,6 @@ To set up and run this project locally, follow these steps:
    cd telemedicine
    ```
 
-````
-
 2. **Install Dependencies**:
 
    ```bash
@@ -260,4 +258,7 @@ Let me know if there’s anything else to add!
 If you have any questions, feedback, or suggestions, feel free to reach out to me:
 
 - **Email:** [davidatoroyosika@gmail.com](mailto:davidatoroyosika@gmail.com)
-````
+
+```
+
+```
