@@ -6,7 +6,7 @@ const session = require('express-session'); // Seession management
 const MySQLStore = require('express-mysql-session')(session); // Storage for session management
 const dotenv = require('dotenv'); // Managing environment variables
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs'); // File system module
 
 // Initialize env management
 dotenv.config();
