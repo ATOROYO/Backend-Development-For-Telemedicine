@@ -55,6 +55,7 @@ The Telemedicine Web Application provides the following features:
 
 ## Project Structure
 
+```plaintext
 The project directory structure is organized as follows:
 project-root/
 ├── db.js # MySQL database connection
@@ -85,6 +86,7 @@ project-root/
 ├── app.js # Main server file
 ├── package.json # Project dependencies and metadata
 └── README.md # Project documentation
+```
 
 # Project documentation
 
@@ -98,6 +100,8 @@ To set up and run this project locally, follow these steps:
    git clone https://github.com/ATOROYO/Backend-Development-For-Telemedicine.git
    cd telemedicine
    ```
+
+````
 
 2. **Install Dependencies**:
 
@@ -256,3 +260,4 @@ Let me know if there’s anything else to add!
 If you have any questions, feedback, or suggestions, feel free to reach out to me:
 
 - **Email:** [davidatoroyosika@gmail.com](mailto:davidatoroyosika@gmail.com)
+````
