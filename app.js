@@ -12,7 +12,7 @@ const fs = require('fs'); // File system module
 dotenv.config();
 
 // Initialize the app
-// const app = express();
+const app = express();
 
 // Configure middleware
 app.use(express.static(path.join(__dirname, 'frontend')));
