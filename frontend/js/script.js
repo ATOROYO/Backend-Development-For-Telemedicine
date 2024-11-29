@@ -1,4 +1,3 @@
-// Declaring variable
 const divMessage = document.getElementById('message');
 const patientSection = document.getElementById('patientSection');
 const pFirstNameSpan = document.getElementById('pFirstName');
@@ -31,55 +30,8 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   const phone = document.getElementById('regPhone').value;
   const password = document.getElementById('regPassword').value;
 
-  try {
-    const response = await fetch('/telemedicine/api/patient/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, email, phone, password }),
-    });
-
-    // Check response status
-    if (!response.ok) {
-      const errorMessage = `Error: ${response.status} ${response.statusText}`;
-      console.error(errorMessage);
-      showMessage('failed', errorMessage);
-      return;
-    }
-
-    // Parse JSON response
-    let result;
-    try {
-      result = await response.json();
-    } catch (err) {
-      console.error('Failed to parse JSON:', err);
-      showMessage('failed', 'Invalid response from server.');
-      return;
-    }
-
-    // Handle result
-    if (result.status === 201) {
-      showMessage('success', result.message);
-    } else {
-      showMessage('failed', result.message || 'Registration failed.');
-    }
-  } catch (err) {
-    console.error('Network or server error:', err);
-    showMessage('failed', 'Unable to register. Please try again later.');
-  }
-});
-
-// Login form
-document.getElementById('loginForm').addEventListener('submit', async e => {
-  e.preventDefault();
-
-  const firstName = document.getElementById('loginFirstName').value;
-  const lastName = document.getElementById('loginLastName').value;
-  const email = document.getElementById('loginEmail').value;
-  const phone = document.getElementById('loginPhone').value;
-  const password = document.getElementById('loginPassword').value;
-
   //   Transit the data
-  const response = await fetch('/telemedicine/api/patients/register', {
+  const response = await fetch('/telemedicine/api/patient/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ firstName, lastName, email, phone, password }),
@@ -87,8 +39,31 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
 
   const result = await response.json();
 
-  if (result.status === 201) {
+  if (response.status === 201) {
     showMessage('success', result.message);
+  } else {
+    showMessage('failed', result.result);
+  }
+});
+
+// Login form
+document.getElementById('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  //   Transit the data
+  const response = await fetch('/telemedicine/api/patients/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  });
+
+  const result = await response.json();
+
+  if (response.status === 201) {
+    showMessage('success', result.message);
+    getPatient();
   } else {
     showMessage('failed', result.result);
   }
