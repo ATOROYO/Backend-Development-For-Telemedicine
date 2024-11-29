@@ -82,7 +82,7 @@ exports.loginPatient = async () => {
     req.session.email = patient[0].email;
     req.session.phone = patient[0].phone;
 
-    return res.status(200).json({ message: 'Successfull login' });
+    return res.status(201).json({ message: 'Successfull login' });
 
     // Login error
   } catch (error) {

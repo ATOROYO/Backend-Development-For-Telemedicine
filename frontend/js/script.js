@@ -8,7 +8,7 @@ const logoutButton = document.getElementById('logoutButton');
 function showMessage(type, text) {
   divMessage.style.display = 'block';
 
-  if (type == 'succes') {
+  if (type === 'succes') {
     divMessage.style.color = 'green';
   } else {
     divMessage.style.color = 'red';
@@ -50,10 +50,10 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
 document.getElementById('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
   const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
+  const password = document.getElementById('loginpassword').value;
 
   //   Transit the data
-  const response = await fetch('/telemedicine/api/patients/register', {
+  const response = await fetch('/telemedicine/api/patients/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
