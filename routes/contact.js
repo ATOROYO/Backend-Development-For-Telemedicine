@@ -1,7 +1,7 @@
 // routes/contact.js
 const express = require('express');
 const router = express.Router();
-const pool = require('../db'); // Import database connection
+const db = require('../config/db'); // Import database connection
 
 // Route to handle contact form submission
 router.post('/submit', async (req, res) => {

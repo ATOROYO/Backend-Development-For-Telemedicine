@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./db'); // Assuming your database connection is in a separate file
+const db = require('../config/db'); // Assuming your database connection is in a separate file
 
 // Handle consultation booking
 router.post('/consultations/book', async (req, res) => {

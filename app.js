@@ -54,7 +54,7 @@ app.post('/telemedicine/api/patient/register', (req, res) => {
   res.status(201).json({ message: 'User registered successfully!' });
 });
 
-app.get('*', (req, res) => {
+app.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
