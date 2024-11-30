@@ -160,6 +160,8 @@ The backend provides the following endpoints:
 
 - Accepts consultation details (name, email, phone, specialty, doctor, appointment date, and time) and saves the booking.
 
+**Request Body:**
+
 ```json
 {
   "name": "Jane Smith",
@@ -177,6 +179,8 @@ The backend provides the following endpoints:
 **3. Endpoint:** POST /contact/submit
 
 - Accepts contact form data (name, email, subject, and message) and stores it in the database.
+
+**Request Body:**
 
 ```json
 {
