@@ -45,27 +45,50 @@ app.use(
 // route
 app.use('/telemedicine/api/patients', require('./routes/patientRoutes'));
 app.use('/telemedicine/api/providers', require('./routes/providerRoutes'));
-app.use('/telemedicine/api/contact', require('./routes/contact'));
+app.use('/telemedicine/api/submit', require('./routes/contact'));
 app.use(
   '/telemedicine/api/consultations/book',
   require('./routes/consultation')
 );
-app.use('/telemedicine/api/newsletter', require('./routes/newsletters'));
+app.use('/telemedicine/api/newsletter', require('./routes/newsletter'));
 
 app.post('/telemedicine/api/patient/register', (req, res) => {
   res.status(201).json({ message: 'User registered successfully!' });
 });
 
-// Dynamic route to catch other HTML files
-app.get('/:page', (req, res) => {
-  const page = req.params.page;
-  const filePath = path.join(__dirname, 'frontend', `${page}.html`);
+app.post('/telemedicine/api/patient/submit', (req, res) => {
+  res
+    .status(201)
+    .json({ message: 'Your message has been submitted successfully.' });
+});
 
-  if (fs.existsSync(filePath)) {
-    res.sendFile(filePath);
-  } else {
-    res.status(404).send('Page not found');
-  }
+app.post('/consultations/book', (req, res) => {
+  res.status(201).json({ message: 'Consultation booked successfully!' });
+});
+
+// Dynamic route to catch other HTML files
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'signup.html'));
+});
+
+app.get('/patient-login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'patient-login.html'));
+});
+
+app.get('/consultation', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'consultation.html'));
 });
 
 const PORT = process.env.PORT || 3000;
