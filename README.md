@@ -127,7 +127,7 @@ To set up and run this project locally, follow these steps:
 5. **Start the Server**: Run the following command to start the Node.js server:
 
    ```bash
-   node server.js
+   node app.js
    ```
 
 6. **Access the Application**: Open a web browser and navigate to http://localhost:3000 to access the application.
