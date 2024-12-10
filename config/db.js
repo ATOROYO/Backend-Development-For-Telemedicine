@@ -22,11 +22,11 @@ const pool = mysql
   .promise();
 
 async function getUser() {
-  const [rows] = await pool.query('DESC patients');
+  const [rows] = await pool.query('SELECT * FROM patients');
   return rows;
 }
 
 const result = await getUser();
 console.log(result);
 
-// module.exports = pool.promise();
+export default pool;
