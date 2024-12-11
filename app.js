@@ -55,19 +55,19 @@ app.use('/telemedicine/api/consultations/book', consultationRoutes);
 // app.use(consultationRoutes);
 app.use('/telemedicine/api/newsletter', newsletterRoutes);
 
-app.post('/telemedicine/api/patient/register', (req, res) => {
-  res.status(201).json({ message: 'User registered successfully!' });
-});
+// app.post('/telemedicine/api/patients/register', (req, res) => {
+//   res.status(201).json({ message: 'User registered successfully!' });
+// });
 
-app.post('/telemedicine/api/patient/submit', (req, res) => {
-  res
-    .status(201)
-    .json({ message: 'Your message has been submitted successfully.' });
-});
+// app.post('/telemedicine/api/patient/submit', (req, res) => {
+//   res
+//     .status(201)
+//     .json({ message: 'Your message has been submitted successfully.' });
+// });
 
-app.post('/consultations/book', (req, res) => {
-  res.status(201).json({ message: 'Consultation booked successfully!' });
-});
+// app.post('/consultations/book', (req, res) => {
+//   res.status(201).json({ message: 'Consultation booked successfully!' });
+// });
 
 // Dynamic route to catch other HTML files
 app.get('/', (req, res) => {

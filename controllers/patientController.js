@@ -14,7 +14,7 @@ export const registerPatient = async (req, res) => {
   }
 
   // Fetching input parameters from the request body
-  const { firstName, lastName, email, phone, password } = req.body;
+  const { first_name, last_name, email, phone, password } = req.body;
 
   try {
     // Check if patient exists
@@ -32,10 +32,10 @@ export const registerPatient = async (req, res) => {
     // Insert the record
     await db.execute(
       'INSERT INTO patients (first_name, last_name, email, phone, password) VALUES (?,?,?,?,?)',
-      [firstName, lastName, email, phone, hashedPassword]
+      [first_name, last_name, email, phone, hashedPassword]
     );
 
-    console.log(firstName, lastName, email, phone, hashedPassword);
+    console.log(first_name, last_name, email, phone, hashedPassword);
 
     // Response
     return res
@@ -75,9 +75,9 @@ export const loginPatient = async (req, res) => {
     }
 
     // Create a session
-    req.session.patientId = patient[0].patientId;
-    req.session.firstName = patient[0].firstName;
-    req.session.lastName = patient[0].lastName;
+    req.session.patient_id = patient[0].patient_id;
+    req.session.first_name = patient[0].first_name;
+    req.session.last_name = patient[0].last_name;
     req.session.email = patient[0].email;
     req.session.phone = patient[0].phone;
 
@@ -107,7 +107,7 @@ export const logoutPatient = (req, res) => {
 // Get user information for editing
 export const getPatient = async (req, res) => {
   // Check whether user is logged in/authorized
-  if (!req.session.patientId) {
+  if (!req.session.patient_id) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
@@ -115,7 +115,7 @@ export const getPatient = async (req, res) => {
     // Fetch user
     const [patient] = await db.execute(
       'SELECT * FROM patients WHERE patient_id = ?',
-      [req.session.patientId]
+      [req.session.patient_id]
     );
     if (patient.length === 0) {
       return res.status(400).json({ message: 'User not found!' });
@@ -136,7 +136,7 @@ export const getPatient = async (req, res) => {
 
 // Update the patient information
 export const updatePatient = async (req, res) => {
-  if (!req.session.patientId) {
+  if (!req.session.patient_id) {
     return res
       .status(401)
       .json({ message: 'Unauthorized user, please login to continue' });
@@ -151,7 +151,7 @@ export const updatePatient = async (req, res) => {
   }
 
   // Fetch user details from request body
-  const { firstName, lastName, email, phone, password } = req.body;
+  const { first_name, last_name, email, phone, password } = req.body;
 
   try {
     // Prepare our data - hash the password
@@ -160,7 +160,14 @@ export const updatePatient = async (req, res) => {
     // Update the patient details
     await db.execute(
       'UPDATE patients SET first_name = ?, last_name = ?, email = ?, phone = ?, password = ? WHERE patient_id = ?',
-      [firstName, lastName, email, phone, hashedPassword, req.session.patientId]
+      [
+        first_name,
+        last_name,
+        email,
+        phone,
+        hashedPassword,
+        req.session.patient_id,
+      ]
     );
     return res
       .status(200)
