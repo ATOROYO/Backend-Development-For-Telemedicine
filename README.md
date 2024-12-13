@@ -245,7 +245,7 @@ The frontend includes the following pages:
 
 ### Telemedicine Features:
 
-- Add video call and prescription management functionality.
+- Add video call and prescription management functionality to the application.
 
 ### Notifications:
 
