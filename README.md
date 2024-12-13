@@ -251,6 +251,11 @@ The frontend includes the following pages:
 
 - Send email notifications for successful bookings or contact submissions.
 
+## Screeshots
+
+Below is the home page of the Telemedicine
+![Home page](screenshots/homepage.png)
+
 ## Conclusion
 
 ```vbnet
