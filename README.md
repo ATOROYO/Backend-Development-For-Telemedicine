@@ -256,6 +256,12 @@ The frontend includes the following pages:
 Below is the home page of the Telemedicine
 ![Home page](screenshots/homepage.png)
 
+Below is the Blog page with resources to help the patients
+![Blog page](screenshots/blogpage.png)
+
+Below is the signup page for the Telemedicine for new Users
+![Signup page](screenshots/signuppage.png)
+
 ## Conclusion
 
 ```vbnet
