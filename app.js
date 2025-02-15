@@ -10,6 +10,13 @@ import fs from 'fs'; // File system module
 import cors from 'cors';
 import { fileURLToPath } from 'url'; // For ES Module `__dirname`
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Update with your frontend origin
+    credentials: true,
+  })
+);
+
 // Set up __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
