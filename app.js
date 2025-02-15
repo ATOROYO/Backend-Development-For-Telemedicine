@@ -7,6 +7,7 @@ import mysqlSession from 'express-mysql-session'; // Storage for session managem
 import dotenv from 'dotenv'; // Managing environment variables
 import path from 'path';
 import fs from 'fs'; // File system module
+import cors from 'cors';
 import { fileURLToPath } from 'url'; // For ES Module `__dirname`
 
 // Set up __dirname in ES Modules
