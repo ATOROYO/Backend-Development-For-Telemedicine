@@ -253,13 +253,13 @@ The frontend includes the following pages:
 
 ## Screeshots
 
-Below is the home page of the Telemedicine Application
+Below 👇🏽 is the home page of the Telemedicine Application
 ![Home page](screenshots/homepage.png)
 
-Below is the Blog page with resources to help the patients with health tips
+Below 👇🏽 is the Blog page with resources to help the patients with health tips
 ![Blog page](screenshots/blogpage.png)
 
-Below is the signup page for the Telemedicine for new Users
+Below 👇🏽 is the signup page for the Telemedicine for new Users
 ![Signup page](screenshots/signuppage.png)
 
 ## Conclusion
