@@ -4,7 +4,7 @@ import db from '../config/db.js'; // Assuming your database connection is in a s
 const router = express.Router();
 
 // Handle consultation booking
-router.post('/consultations/book', async (req, res) => {
+router.post('/book', async (req, res) => {
   const {
     name,
     email,
