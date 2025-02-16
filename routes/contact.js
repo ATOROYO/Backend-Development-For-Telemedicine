@@ -4,7 +4,7 @@ import db from '../config/db.js'; // Import database connection
 const router = express.Router();
 
 // Route to handle contact form submission
-router.post('/submit', async (req, res) => {
+router.post('/', async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   // Validate required fields
