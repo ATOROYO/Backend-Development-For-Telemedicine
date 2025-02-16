@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url'; // For ES Module `__dirname`
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Update with your frontend origin
+    origin: '*', // Update with your frontend origin
     credentials: true,
   })
 );
