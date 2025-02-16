@@ -52,4 +52,14 @@ router.post('/consultations/book', async (req, res) => {
   }
 });
 
+//
+router.get('/doctors', async (req, res) => {
+  const { specialty } = req.query;
+  const [doctors] = await db.execute(
+    'SELECT * FROM providers WHERE specialty = ?',
+    [specialty]
+  );
+  res.json(doctors);
+});
+
 export default router;

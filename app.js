@@ -58,10 +58,10 @@ import newsletterRoutes from './routes/newsletter.js';
 
 app.use('/telemedicine/api/patients', patientRoutes);
 app.use('/telemedicine/api/providers', providerRoutes);
-app.use('/telemedicine/api/submit', contactRoutes);
-app.use('/telemedicine/api/consultations/book', consultationRoutes);
-// app.use(consultationRoutes);
+app.use('/telemedicine/api/contact', contactRoutes); // Changed from '/submit'
+app.use('/telemedicine/api/consultations', consultationRoutes); // Mount under consultations
 app.use('/telemedicine/api/newsletter', newsletterRoutes);
+// app.use(consultationRoutes);
 
 // app.post('/telemedicine/api/patients/register', (req, res) => {
 //   res.status(201).json({ message: 'User registered successfully!' });
